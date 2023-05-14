@@ -114,11 +114,39 @@ class LinkedList {
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    let currIndex = 0;
+    let currNode = this.head;
+    while (currNode) {
+      if (currIndex === idx) {
+        let prevNode = currNode.prev;
+        let nextNode = currNode.next;
+        prevNode.next = nextNode;
+        console.log(currNode);
+      }
+      currIndex++;
+      currNode = currNode.next;
+    }
+    throw new Error("Invalid index");
+  }
 
   /** average(): return an average of all values in the list */
 
-  average() {}
+  average() {
+    let totalSum = 0;
+    let count = 0;
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      totalSum += currentNode.val;
+      count += 1;
+      currentNode = currentNode.next;
+    }
+    if (count === 0) {
+      return 0.0;
+    }
+    return totalSum / count;
+  }
 }
 
 module.exports = LinkedList;
