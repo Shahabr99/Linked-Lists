@@ -149,4 +149,27 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList;
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  reverse() {
+    let currNode = this.head;
+    this.tail = currNode;
+
+    while (currNode) {
+      const temp = currNode.next;
+
+      currNode.next = currNode.prev;
+      currNode.prev = temp;
+      if (!temp) {
+        this.head = currNode;
+      }
+      currNode = temp;
+    }
+  }
+}
+
+// module.exports = LinkedList;
